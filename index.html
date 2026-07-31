@@ -108,8 +108,8 @@
     const shortcutName = "CreerAlbumsMultiples";
     const albums = ["Vacances", "Famille", "Projets"];
 
-    // URL exacte pointant vers le fichier index.html
-    const BASE_URL = "https://hammerinhank.github.io/e822cae9-02cc-4d2d-8ee5-c5173f69ac42/index.html";
+    // Récupération dynamique de l'URL courante de la page
+    const BASE_URL = window.location.origin + window.location.pathname;
 
     // -------------------------------------------------------------
     // CONSTRUCTION DE L'URL X-CALLBACK
@@ -149,7 +149,7 @@
       statusBox.style.display = "block";
       statusBox.innerHTML = `✅ <strong>Succès !</strong> ${count} album(s) créé(s) avec succès dans Photos.`;
       
-      // Nettoie l'URL pour enlever les paramètres d'état
+      // Nettoie l'URL dans la barre d'adresse
       window.history.replaceState({}, document.title, window.location.pathname);
     } else if (status === "error") {
       statusBox.className = "status-box status-error";
